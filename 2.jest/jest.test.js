@@ -122,10 +122,14 @@ test('the data is peanut butter', async ()=>{
 });
 
 // 테스트 전 후로 처리해야하는 경우 
+
+//test함수가 실행 전 작업
+//test를 위한 data를 저장할 경우 초기설정 등..
 beforeEach(() => {
   initializeCityDatabase();
 });
 
+//test함수가 실행 후 작업
 afterEach(() => {
   clearCityDatabase();
 });
@@ -139,10 +143,12 @@ test('city database has San Juan', () => {
 });
 
 //일회성 설정
+//test 가장 초기에만 실행
 beforeAll(() => {
   return initializeCityDatabase();
 });
 
+//test 가장 먀지막에만 실행
 afterAll(() => {
   return clearCityDatabase();
 });
@@ -153,4 +159,22 @@ test('city database has Vienna', () => {
 
 test('city database has San Juan', () => {
   expect(isCity('San Juan')).toBeTruthy();
+});
+
+//.only() , .skip()
+
+test.only("run only", () => {
+  // 이 테스트 함수만 실행됨
+});
+
+test("not run", () => {
+  // 실행 안됨
+});
+
+test.skip("skip", () => {
+  // 이 테스트 함수는 제외됨
+});
+
+test("run", () => {
+  // 실행됨
 });

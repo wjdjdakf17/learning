@@ -14,7 +14,7 @@ describe(테스트 스위트명, specs);
 - afterEach => 개별 테스트 실행이 된 이후 처리하는 메서드 (생략 가능)
 - it => specs 내의 개별 테스트 코드 (it들이 모여 테스트 스위트를 이룸)
 
-<code>
+```javascript
  it('테스트케이스명', '테스트코드');
  //테스트 코드 내부의 expecdt()메서드 => 테스에 대한 검증 
  //toEqual()메서드 => Matcher(기대값)
@@ -22,6 +22,6 @@ describe(테스트 스위트명, specs);
  expect(테스트 대상 코드).Matcher(기대값);
  Matcher => expect 코드에 따른 결과를 확인하는 메서드
 
-</code>
+```
 
 

@@ -161,7 +161,6 @@ test('city database has San Juan', () => {
   expect(isCity('San Juan')).toBeTruthy();
 });
 
-
 //.only() , .skip()
 
 test.only("run only", () => {
@@ -170,4 +169,12 @@ test.only("run only", () => {
 
 test("not run", () => {
   // 실행 안됨
+});
+
+test.skip("skip", () => {
+  // 이 테스트 함수는 제외됨
+});
+
+test("run", () => {
+  // 실행됨
 });

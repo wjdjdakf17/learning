@@ -164,9 +164,9 @@ test('city database has San Juan', () => {
 
 
 //.only() , .skip()
-test.only("run only", () => {
+//test.only("run only", () => {
   // 이 테스트 함수만 실행됨
-});
+//});
 
 test("not run", () => {
   // 실행 안됨
@@ -178,4 +178,97 @@ test.skip("skip", () => {
 
 test("run", () => {
   // 실행됨
+});
+
+// mock
+
+const mockFn = jest.fn() //mock 함수 생성
+
+mockFn();
+mockFn(1);
+
+test("함수는 2번 호출됩니다",()=>{
+  //console.log(mockFn.mock.calls); //함수가 총 몇번 호출 되었는가 호출된 인수는 무엇인가
+  expect(mockFn.mock.calls.length).toBe(2);
+});
+test("2번째로 호출된 함수에 전달된 첫번째 인수는 1입니다",()=>{
+  //console.log(mockFn.mock.calls); //함수가 총 몇번 호출 되었는가 호출된 인수는 무엇인가
+  expect(mockFn.mock.calls[1][0]).toBe(1);
+});
+
+const mockFn2 = jest.fn();
+
+function forEachAdd1(arr){
+  arr.forEach(num =>{
+    mockFn2(num+1)
+  });
+}
+forEachAdd1(10,20,30);
+
+test("함수 호출은 3번",()=>{
+  expect(mockFn2.mock.calls.length).toBe(3)
+});
+
+test("전달된 값은 11,21,31",()=>{
+  expect(mockFn2.mock.calls[0][0]).toBe(11);
+  expect(mockFn2.mock.calls[1][0]).toBe(21);
+  expect(mockFn2.mock.calls[2][0]).toBe(31);
+})
+
+
+const mockFn3 = jest.fn();
+
+mockFn3
+.mockReturnValueOnce(true)
+.mockReturnValueOnce(false)
+.mockReturnValueOnce(true)
+.mockReturnValueOnce(false)
+.mockReturnValue(true) //마지막에는 Once제거
+
+//mockResulvedValue 는 비동기 함수
+mockFn3.mockResolvedValue({name:"mike"});
+test("받아온 이름은 Mike",()=>{
+  mockFn3().then(res=>{
+    espect(res.name).toBe("Mike");
+  });
+});
+
+
+const result = [1,2,3,4,5].filter(num => mockFn3(num));
+
+//홀수인 callback을 만드는 대신에 목함수를 사용해 간단히 테스트
+test("홀수는 1,3,5",()=>{
+  expect(result).toStrictEqual([1,3,5]);
+});
+  
+
+//DB에서 데이터를 조회 할 때는 
+const fn = require("./fn");// db import
+jest.mock("./fn");
+fn.createUser.mockReturnValue({name:"Mike"});
+
+test("user를 생성한다",()=>{
+  //실제로 createUser 함수가 동작하지는 않고 목함수로 생성처리
+  const user = fn.createUser("Mike");
+  expect(user.name).toBe("Mike");
+});
+
+//호출 확인 메서드 
+const mockFn4 = jest.fn();
+
+mockFn4(10, 20);
+mockFn4();
+mockFn4(30, 40);
+
+test("한번 이상 호출?",()=>{
+  expect(mockFn4).toBeCalled();
+});
+test("정확히 세번 호출?",()=>{
+  expect(mockFn4).toBeCalledTimes(3);
+});
+test("10이랑 20 전달받은 함수가 있는가?",()=>{
+  expect(mockFn4).toBeCalledWith(10, 20);
+});
+test("마지막 함수는 30이랑 40을 받았는가?",()=>{
+  expect(mockFn4).lastCalledWith(30, 40);
 });

@@ -25,7 +25,11 @@ test('null', () => {
   expect(n).not.toBeTruthy();
   expect(n).toBeFalsy();
 });
-
+/**
+ *@param {string} name이름 입력란입니다
+ *@param 
+ *@returns 이름과 나이 출력     
+ */
 test('zero', () => {
   const z = 0;
   expect(z).not.toBeNull();
@@ -181,7 +185,7 @@ test("run", () => {
 });
 
 // mock
-
+// mock 함수 자체는 특정 기능을 하게 하는 함수를 테스트를 위해 생성
 const mockFn = jest.fn() //mock 함수 생성
 
 mockFn();
@@ -270,5 +274,5 @@ test("10이랑 20 전달받은 함수가 있는가?",()=>{
   expect(mockFn4).toBeCalledWith(10, 20);
 });
 test("마지막 함수는 30이랑 40을 받았는가?",()=>{
-  expect(mockFn4).lastCalledWith(30, 40);
+  expect(mockFn4).lastCalledWith(30, 40); //정말 마지막으로 받은 인수만 확인
 });

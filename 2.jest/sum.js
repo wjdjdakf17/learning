@@ -5,5 +5,5 @@ function sum(a, b) {
   return a + b;
 }
 console.log(module)
-module.exports = sum;
+module.exports = sum
 //console.log(module)

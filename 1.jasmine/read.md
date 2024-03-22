@@ -24,4 +24,17 @@ describe(테스트 스위트명, specs);
 
 ```
 
+- toBe(expect)	expect와 동일한 '객체'이면 성공 아니면 실패
+- toEqual(expect)	expect와 동일한 '값'이면 성공 아니면 실패
+- toMatch(regex)	regex(정규식 표현)과 매치되면 성공 아니면 실패
+- toContain(expect)	expect가 배열 내부에 포함되어 있으면 성공 아니면 실패
+- toBeNull()	(코드 결과가)null이면 성공 아니면 실패
+- toBeDefined()	undefined가 아니라면 성공 아니면 실패 (즉, 정의 되었는 가)
+- toTruthy()	true로 간주 가능한 값이면 성공 아니면 실패
+- toFalsy()	false로 간주 가능한 값이면 성공 아니면 실패
+- toThrow()	예외를 발생시키면 성공 아니면 실패
+- toBeLessThan(compareValue)	compareValue보다 작으면 성공 아니면 실패
+- toBeGreaterThan(compareValue)	compareValue보다 크다면 성공 아니면 실패
+- toBeCloseTo(compareValue, precision)	presicion으로 반올림 했을 때,
+- compareValue와 같으면 성공 아니면 실패
 

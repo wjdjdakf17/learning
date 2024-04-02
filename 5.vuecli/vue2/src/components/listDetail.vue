@@ -14,6 +14,7 @@
     components:{
       ListView
     },
+    //state는 computed에서 관리
     computed:{
       list(){
         return this.$store.state.list;

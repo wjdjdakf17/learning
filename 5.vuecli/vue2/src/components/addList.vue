@@ -15,7 +15,8 @@
     },
     methods:{
       addList(e){
-        this.$store.commit('ADD_LIST', e.target.value)
+        this.$store.dispatch('addToList', e.target.value);
+        // this.$store.commit('ADD_LIST', e.target.value)
         this.listText='';
         // this.$emit('add-list',e.target.value);
         // this.listText='';

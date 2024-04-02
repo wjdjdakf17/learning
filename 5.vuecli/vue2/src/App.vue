@@ -12,18 +12,20 @@
     <hr>
     <listDetail />
     <!--vue의 반응형 시스템의 작동원리 때문 -->
-   
+    <UserList />
   </div>
 </template>
 <script>
   import listDetail from '@/components/listDetail.vue'
   import addList from '@/components/addList.vue'
   import CompletedTodo from '@/components/CompletedList.vue'
+  import UserList from '@/components/UserList.vue'
   export default{
     components:{
       listDetail,
       addList,
-      CompletedTodo
+      CompletedTodo,
+      UserList
     },
     data(){
       return{

@@ -29,7 +29,7 @@
     // },
     methods:{
       toggleChecked(e){
-        this.$store.commit('TOGGLE_LIST',{id:this.list.id,checked:e.target.checked})
+        this.$store.commit('TOGGLE_LIST',{id:this.lists.id,checked:e.target.checked})
         // this.$emit('toggleChecked'
         // , { id : this.lists.id
         // , checked : e.target.checked}
@@ -37,7 +37,7 @@
       },
       deleteList(){
         //muted는 어디서나 실행 
-        this.$store.commit('DELETE_LIST',this.lists.id)
+        this.$store.dispatch('deleteList',this.lists.id)
         //this.$emit('deleteList',this.lists.id)
       }
     }

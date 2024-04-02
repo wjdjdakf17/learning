@@ -1,0 +1,20 @@
+{
+  "root": true,
+  "plugins": [
+      "@typescript-eslint" //ts전용 플러그인
+  ],
+  "extends": [
+      "eslint:recommended", 
+      "plugin:@typescript-eslint/recommended" //eslint rule 설정이 저장되어 있는 외부 file을 extends 하는 부분이다
+  ],
+  "parser": "@typescript-eslint/parser", //각 코드 파일을 검사할 파서를 설정하는 부분
+  "rules": {
+      "@typescript-eslint/strict-boolean-expressions": [
+          2,
+          {
+              "allowString" : false,
+              "allowNumber" : false
+          }
+      ]
+  }
+}

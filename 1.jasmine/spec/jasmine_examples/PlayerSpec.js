@@ -1,5 +1,5 @@
-const Player = require('../../lib/jasmine_examples/Player');
-const Song = require('../../lib/jasmine_examples/Song');
+const Player = require('../../../lib/jasmine_examples/Player');
+const Song = require('../../../lib/jasmine_examples/Song');
 
 describe('Player', function() {
   let player;
